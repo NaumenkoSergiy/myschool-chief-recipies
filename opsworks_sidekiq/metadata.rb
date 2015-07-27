@@ -1,4 +1,4 @@
-name 'opsworks_sidekiq'
+name 'sidekiq'
 maintainer 'BargeApp LLC'
 maintainer_email 'noah@bargeapp.com'
 license 'MIT'
