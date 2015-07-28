@@ -40,7 +40,8 @@ node[:deploy].each do |application, deploy|
   release_path = ::File.join(deploy[:deploy_to], 'current')
   execute "test" do
     cwd release_path
-    command "pkill -f sidekiq; bundle exec sidekiq -C config/myschool_sidekiq.yml -d -L log/sidekiq.log"
+    command "pkill -f sidekiq;"
+    command "bundle exec sidekiq -C config/myschool_sidekiq.yml -d -L log/sidekiq.log"
     environment "RAILS_ENV" => 'staging'
   end
 end
