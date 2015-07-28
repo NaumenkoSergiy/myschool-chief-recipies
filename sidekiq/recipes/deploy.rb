@@ -38,11 +38,10 @@
 #   # end
 # end
 
-rails_env = new_resource.environment["RAILS_ENV"]
 Chef::Log.info("test")
 
 execute "test" do
   cwd release_path
   command "bundle exec sidekiq -C config/myschool_sidekiq.yml -d -L log/sidekiq.log"
-  environment "RAILS_ENV" => rails_env
+  environment "RAILS_ENV" => 'staging'
 end
