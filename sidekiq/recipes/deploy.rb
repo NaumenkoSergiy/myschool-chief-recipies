@@ -21,6 +21,10 @@ node[:deploy].each do |application, deploy|
       })
     end
 
+    execute "start sidekiq on #{application}" do
+      command "bundle exec sidekiq -C config/myschool_sidekiq.yml -d -L log/sidekiq.log"
+    end
+
     # service "sidekiq-#{application}" do
     #   provider Chef::Provider::Service::Upstart
     #   supports stop: true, start: true, restart: true, status: true
