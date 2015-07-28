@@ -1,4 +1,4 @@
-# node[:deploy].each do |application, deploy|
+node[:deploy].each do |application, deploy|
 #   # if deploy['sidekiq']
 #   #   sidekiq_config = deploy['sidekiq']
 #   #   release_path = ::File.join(deploy[:deploy_to], 'current')
@@ -36,12 +36,12 @@
 #     #   notifies :restart, "service[sidekiq-#{application}]"
 #     # end
 #   # end
-# end
-
-Chef::Log.info("test")
-release_path = ::File.join(deploy[:deploy_to], 'current')
-execute "test" do
-  cwd release_path
-  command "bundle exec sidekiq -C config/myschool_sidekiq.yml -d -L log/sidekiq.log"
-  environment "RAILS_ENV" => 'staging'
+  Chef::Log.info("test")
+  release_path = ::File.join(deploy[:deploy_to], 'current')
+  execute "test" do
+    cwd release_path
+    command "bundle exec sidekiq -C config/myschool_sidekiq.yml -d -L log/sidekiq.log"
+    environment "RAILS_ENV" => 'staging'
+  end
 end
+
