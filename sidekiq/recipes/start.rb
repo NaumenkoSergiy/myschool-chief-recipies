@@ -7,6 +7,13 @@ bash "test" do
   EOC
 end
 
+bash "test exit" do
+  user 'root'
+  code <<-EOC
+    ( exit )
+  EOC
+end
+
 node[:deploy].each do |application, deploy|
   Chef::Log.info("test")
   release_path = ::File.join(deploy[:deploy_to], 'current')
