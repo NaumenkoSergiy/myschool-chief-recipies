@@ -4,7 +4,7 @@ node[:deploy].each do |application, deploy|
 
   execute "start" do
     cwd release_path
-    command "ps -ef | grep sidekiq | grep -v grep | awk '{print $2}' | xargs kill -9; true; bundle exec sidekiq -C config/myschool_sidekiq.yml -d -L log/sidekiq.log -p tmp/pids/sidekiq.pid"
+    command "ps -ef | grep sidekiq | grep -v grep | awk '{print $2}' | xargs kill -9;"
     environment "RAILS_ENV" => 'staging'
   end
 end
