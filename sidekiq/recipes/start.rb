@@ -1,21 +1,7 @@
 bash "test" do
   user 'root'
   code <<-EOC
-    ( sudo su )
-  EOC
-end
-
-bash "test1" do
-  user 'root'
-  code <<-EOC
-    ( ps -ef | grep sidekiq | grep -v grep | awk '{print $2}' | xargs kill -9 )
-  EOC
-end
-
-bash "test exit" do
-  user 'root'
-  code <<-EOC
-    ( exit )
+    ( pkill -f sidekiq; true )
   EOC
 end
 
