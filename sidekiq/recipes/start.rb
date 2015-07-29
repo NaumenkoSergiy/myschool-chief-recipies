@@ -2,8 +2,14 @@ bash "test" do
   user 'root'
   code <<-EOC
     ( sudo su )
-    ( ps -ef | grep sidekiq | grep -v grep | awk '{print $2}' | xargs kill -9 )
     ( exit )
+  EOC
+end
+
+bash "test1" do
+  user 'root'
+  code <<-EOC
+    ( ps -ef | grep sidekiq | grep -v grep | awk '{print $2}' | xargs kill -9 )
   EOC
 end
 
