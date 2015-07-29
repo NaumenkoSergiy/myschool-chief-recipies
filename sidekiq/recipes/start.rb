@@ -6,7 +6,7 @@ node[:deploy].each do |application, deploy|
     # OpsWorks::Sidekiq.kill_all_sidekiq
   bash 'start-sidekiq' do
     code <<-EOH
-    (cd #{release_path})
+    (cd /srv/www/myschool_staging/current/)
     (pkill -f sidekiq)
     (bundle exec sidekiq -C config/myschool_sidekiq.yml -d -L log/sidekiq.log)
     EOH
