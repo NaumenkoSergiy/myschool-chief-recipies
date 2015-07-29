@@ -5,6 +5,7 @@ module OpsWorks
         code <<-EOH
           (ps -ef | grep sidekiq | grep -v grep | awk '{print $2}' | xargs kill -9)
         EOH
+      end
     end
   end
 end
