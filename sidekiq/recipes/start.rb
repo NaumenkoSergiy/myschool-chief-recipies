@@ -1,7 +1,7 @@
 bash "test" do
   user 'root'
   code <<-EOC
-    ( pkill -f sidekiq; true )
+    ( sudo pkill -f sidekiq; true )
   EOC
 end
 
