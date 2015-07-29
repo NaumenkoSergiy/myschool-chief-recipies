@@ -2,7 +2,6 @@ bash "test" do
   user 'root'
   code <<-EOC
     ( sudo su )
-    ( exit )
   EOC
 end
 
