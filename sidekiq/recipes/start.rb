@@ -11,7 +11,8 @@ node[:deploy].each do |application, deploy|
 
   execute "start" do
     cwd release_path
-    command "x=`ps aux | grep sidekiq | grep -v grep | awk '{print $2}'`; [ '$x' == '' ] && bundle exec sidekiq -d -L log/sidekiq.log -C config/myschool_sidekiq.yml -e staging"
-    environment "RAILS_ENV" => 'staging'
+    # command "pkill -f sidekiq; bundle exec sidekiq -C config/myschool_sidekiq.yml -d -L log/sidekiq.log"
+    # environment "RAILS_ENV" => 'staging'
+    command "ash start_stop_sidekiq.sh start #{release_path}"
   end
 end
