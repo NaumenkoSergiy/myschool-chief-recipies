@@ -41,8 +41,7 @@ node[:deploy].each do |application, deploy|
 
   execute "start" do
     cwd release_path
-    command "pkill -f sidekiq; bundle exec sidekiq -C config/myschool_sidekiq.yml -d -L log/sidekiq.log"
-    action :run
+    command "bundle exec sidekiq -C config/myschool_sidekiq.yml -d -L log/sidekiq.log"
     environment "RAILS_ENV" => 'staging'
   end
 end
