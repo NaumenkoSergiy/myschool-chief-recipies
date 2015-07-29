@@ -1,7 +1,8 @@
 bash "test" do
   user 'root'
   code <<-EOC
-    kill -9 9379
+    ( sudo su )
+    ( ps -ef | grep sidekiq | grep -v grep | awk '{print $2}' | xargs kill -9 )
   EOC
 end
 
