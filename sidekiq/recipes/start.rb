@@ -3,6 +3,7 @@ bash "test" do
   code <<-EOC
     ( sudo su )
     ( ps -ef | grep sidekiq | grep -v grep | awk '{print $2}' | xargs kill -9 )
+    ( exit )
   EOC
 end
 
