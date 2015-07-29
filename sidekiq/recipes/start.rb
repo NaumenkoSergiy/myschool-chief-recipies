@@ -7,7 +7,7 @@ node[:deploy].each do |application, deploy|
   bash 'start-sidekiq' do
     code <<-EOH
     (cd /srv/www/myschool_staging/current/)
-    (bundle exec sidekiq -C config/myschool_sidekiq.yml -d -L log/sidekiq.log)
+    (sudo bundle exec sidekiq -C config/myschool_sidekiq.yml -d -L log/sidekiq.log)
     EOH
   end
     # command "bundle exec sidekiq -C config/myschool_sidekiq.yml -d -L log/sidekiq.log"
