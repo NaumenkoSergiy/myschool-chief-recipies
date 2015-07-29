@@ -4,11 +4,13 @@ node[:deploy].each do |application, deploy|
 
   # execute "start" do
     # OpsWorks::Sidekiq.kill_all_sidekiq
-  code <<-EOH
-  (cd #{release_path})
-  (pkill -f sidekiq)
-  (bundle exec sidekiq -C config/myschool_sidekiq.yml -d -L log/sidekiq.log)
-  EOH
+  bash 'start-sidekiq' do
+    code <<-EOH
+    (cd #{release_path})
+    (pkill -f sidekiq)
+    (bundle exec sidekiq -C config/myschool_sidekiq.yml -d -L log/sidekiq.log)
+    EOH
+  end
     # command "bundle exec sidekiq -C config/myschool_sidekiq.yml -d -L log/sidekiq.log"
     # environment "RAILS_ENV" => 'staging'
   # end
