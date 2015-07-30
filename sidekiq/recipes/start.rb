@@ -11,7 +11,7 @@ node[:deploy].each do |application, deploy|
 
   execute "start" do
     cwd release_path
-    command "bundle exec sidekiq -C config/myschool_sidekiq.yml -d -L log/sidekiq.log -P tmp/pids/sidekiq.pid"
+    command "kill -9 `cat tmp/pids/sidekiq.pid`; bundle exec sidekiq -C config/myschool_sidekiq.yml -d -L log/sidekiq.log -P tmp/pids/sidekiq.pid"
     environment "RAILS_ENV" => 'staging'
   end
 end
