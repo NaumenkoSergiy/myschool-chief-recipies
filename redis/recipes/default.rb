@@ -11,8 +11,6 @@ src_url = node[:redis][:source_url] || "http://redis.googlecode.com/files/redis-
 src_filepath  = "#{Chef::Config['file_cache_path'] || '/tmp'}/redis-#{node[:redis][:version]}.tar.gz"
 src_dir = "#{Chef::Config['file_cache_path'] || '/tmp'}/redis-#{node[:redis][:version]}"
 
-include_recipe 'build-essential'
-
 # Download Redis from source
 remote_file src_url do
   source src_url
