@@ -9,9 +9,6 @@
       "git": "git://github.com/jtescher/chef-newrelic-sysmond.git",
       "ref": "c3715ec1f14e682f42bd6d72c0e5feb4d3e247bd"
     },
-    "build-essential": {
-      "locked_version": "1.4.0"
-    },
     "apt": {
       "locked_version": "1.9.2"
     }
